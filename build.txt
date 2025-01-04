@@ -1,0 +1,3 @@
+displayName = Rare Drop Notification
+author = Pearlie
+version = 0.1
