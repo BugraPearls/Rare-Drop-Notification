@@ -1,1 +1,60 @@
-Mods.RareDropNotification.RareDrop: Rare Drop! <itemName> [i:<item>] (<chance>% chance)
+Mods: {
+	RareDropNotification: {
+		RareDrop: "[c/<color>:Rare Drop! <itemName>] [i:<item>] [c/<color>:(<chance>% chance)]"
+		ConfigName: Notification Customization
+		TriggerThreshold: Trigger Threshold %
+		TriggerThresholdTip: Message and Sound effect only triggers when drop chance of dropped item is below this value.
+		TextColor: Color of rare drop text
+		TextColorTip: ""
+		CustomSound: Custom Sound Path [c/FF0000:USE AT YOUR OWN RISK]
+		CustomSoundTip:
+			'''
+			Type in the path of desired sound effect here, and it will be played when a Rare Loot is dropped.
+			Use ModName/FileDestination/SoundsName for Mod Sound effects. (Refer to Desired Mod's GitHub page or its extracted files)
+			Create your 'own mod' and include the sound you want to use, then proceed to use path above to use any sound you want.
+			Use Terraria/Sounds/SoundsName for vanilla sounds. (Refer to 'File' at https://terraria.wiki.gg/wiki/Sound_IDs (use _ for spaces))
+			Its heavily recommended to write/find the path, and copy-paste here, as writing in this textbox may have its difficulties.
+			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY USE AT YOUR OWN RISK!]
+			'''
+		EnableCustom: Enable Custom Sound Effect
+		EnableCustomTip:
+			'''
+			Custom sound effect path will not take in effect if this isn't enabled.
+			So you can choose to switch it out without removing the path.
+			'''
+		SoundPitch: Sound Effect Pitch
+		SoundPitchTip: Sets the base pitch of rare loot drop sound effect.
+		SoundPitchVariation: Sound Effect Pitch Variation
+		SoundPitchVariationTip:
+			'''
+			Sets the possible amount of pitch can be increased/decreased when rare loot drop sound effect is played.
+			Recommended to have this more than 0, as it can reduce repetitiveness of the sound effect.
+			'''
+		SoundVolume: Sound Effect Volume
+		SoundVolumeTip:
+			'''
+			Sets the volume of rare loot drop sound effect.
+			Set this to 0 to entirely stop the sound effect code from running.
+			'''
+		Sound: Rare Drop Sound Effect Settings
+		Experimental: Experimental Settings
+
+		Configs: {
+			SoundEffect: {
+				Tooltip: Selection of which sound effect to be played when a rare loot gets dropped.
+				HypixelSkyblock.Label: Hypixel Skyblock Rare Drop
+				Item35.Label: Vanilla Terraria Bell
+				Item129.Label: Vanilla Terraria Golf Ball sunking in Golf Cup
+				Item150.Label: Vanilla Terraria Mimic Projectile Reflect
+				Zombie15.Label: Vanilla Terraria Mouse Squeak
+			}
+		}
+
+		CurrentSound: Current Sound Effect
+		CurrentSoundTip:
+			'''
+			Sound effect to play when a rare loot has been dropped.
+			Does nothing if custom sound effect is turned on.
+			'''
+	}
+}
