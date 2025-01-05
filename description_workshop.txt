@@ -1,6 +1,6 @@
 [b]With this mod, never miss out when you drop a loot with low chance! Includes all sorts of loot such as NPC Drops and Loot Bags! (Boss Bags, Crates, Presents & More!)[/b]
 
-[b]This mod is fully compatible with ALL MODS![/b]
+[b]This mod is fully compatible with ALL MODS and Multiplayer![/b]
 
 [h3]What this mod brings as whenever you drop something below given chance (5% by default):[/h3]
 [list]
