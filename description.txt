@@ -7,4 +7,4 @@ What this mod brings as whenever you drop something below given chance (5% by de
 > An exciting Sound Effect to alert you that you've dropped a rare drop! (defaults to Hypixel Skyblock's rare drop sound effect)
 > Lots of config options to customize your Rare Drop Notification to your liking! Even with an option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
 
-Im very bad with Icon/Spriting etc., if interested, any help would be heavily appreciated!
+If you want to support me, you can by either donating at my patreon (patreon.com/pearlying) or help me with a decent mod icon (im bad with it)! If not just enjoy the mod, thats good enough!

@@ -9,4 +9,4 @@ This mod is fully compatible with [b]all Mods and Multiplayer![/b]
 [*] Lots of config options to customize your Rare Drop Notification to your liking! Even with an option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
 [/list]
 
-Im very bad with Icon/Spriting etc., if interested, any help would be heavily appreciated!
+If you want to support me, you can by either donating at my [url=https://www.patreon.com/pearlying]Patreon Page[/url] or help me with a decent mod icon (im bad with it)! If not just enjoy the mod, thats good enough!
