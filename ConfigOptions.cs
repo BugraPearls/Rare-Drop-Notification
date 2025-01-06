@@ -17,10 +17,11 @@ namespace RareDropNotification
     }
     public class ConfigOptions : ModConfig
     {
+        public const float MaxPercent = 20f;
         public override LocalizedText DisplayName => Language.GetText("Mods.RareDropNotification.ConfigName");
         public override ConfigScope Mode => ConfigScope.ClientSide;
         [Slider()]
-        [Range(0.5f, 20f)]
+        [Range(0.5f, MaxPercent)] 
         [DefaultValue(5)]
         [LabelKey("$Mods.RareDropNotification.TriggerThreshold")]
         [TooltipKey("$Mods.RareDropNotification.TriggerThresholdTip")]

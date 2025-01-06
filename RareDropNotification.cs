@@ -41,39 +41,42 @@ namespace RareDropNotification
         }
         public static void NotificationEffects(int itemID, float chance)
         {
+            if (chance <= Options.TriggerThreshold) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
+            {
                 Main.NewText(Language.GetTextValue("Mods.RareDropNotification.RareDrop")
                             .Replace("<color>", Options.TextColor.Hex3())
                             .Replace("<itemName>", ContentSamples.ItemsByType[itemID].Name)
                             .Replace("<item>", itemID.ToString())
                             .Replace("<chance>", chance.ToString()));
-            if (Options.SoundEffectVolume > 0)
-            {
-                if (Options.EnableCustom)
+                if (Options.SoundEffectVolume > 0)
                 {
-                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle(Options.CustomSound))); //This is risky, but still fun
-                }
-                else
-                {
-                    switch (Options.CurrentSound)
+                    if (Options.EnableCustom)
                     {
-                        case SoundEffect.HypixelSkyblock:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                            break;
-                        case SoundEffect.Item35:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
-                            break;
-                        case SoundEffect.Item150:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_150")));
-                            break;
-                        case SoundEffect.Item129:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_129")));
-                            break;
-                        case SoundEffect.Zombie15:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Zombie_15")));
-                            break;
-                        default:
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                            break;
+                        SoundEngine.PlaySound(ModifiedSound(new SoundStyle(Options.CustomSound))); //This is risky, but still fun
+                    }
+                    else
+                    {
+                        switch (Options.CurrentSound)
+                        {
+                            case SoundEffect.HypixelSkyblock:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
+                                break;
+                            case SoundEffect.Item35:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
+                                break;
+                            case SoundEffect.Item150:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_150")));
+                                break;
+                            case SoundEffect.Item129:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_129")));
+                                break;
+                            case SoundEffect.Zombie15:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Zombie_15")));
+                                break;
+                            default:
+                                SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
+                                break;
+                        }
                     }
                 }
             }
@@ -84,7 +87,7 @@ namespace RareDropNotification
             if (result.State is ItemDropAttemptResultState.Success && rule is CommonDrop drop)
             {
                 double chance = Math.Round((double)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) * 100, 3);
-                if (chance <= Options.TriggerThreshold)
+                if (chance <= ConfigOptions.MaxPercent) //we check if chance is below 20% (Max in config) here to prevent unnecessary messages sent as Netcode since otherwise it would send messages for all drops.
                 {
                     if (Main.netMode == NetmodeID.Server)
                     {
