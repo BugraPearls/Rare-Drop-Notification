@@ -1,12 +1,14 @@
 [b]With this mod, never miss out when you drop a loot with low chance! Includes all sorts of loot such as NPC Drops and Loot Bags! (Boss Bags, Crates, Presents & More!)[/b]
 
-This mod is fully compatible with [b]all Mods and Multiplayer![/b]
-
 [h3]What this mod brings as whenever you drop something below given chance (5% by default):[/h3]
 [list]
 [*] You will get a colored Text, which shows how much chance it was, item's name and hoverable item in your chat! 
-[*] An exciting Sound Effect to alert you that you've dropped a rare drop! (defaults to Hypixel Skyblock's rare drop sound effect)
+[*] An exciting Sound Effect to alert you that you've dropped a rare drop! 
+[*] Many sound effects to choose from! (Including Hypixel Skyblock, PSO2, Pokemon and CS:GO, defaults to Hypixel Skyblock's rare drop sound effect)
+[*] Rare Drops with very low chance gets announced to all players in the same world! (Can be turned off, and can use a different color & sound effect)
 [*] Lots of config options to customize your Rare Drop Notification to your liking! Even with an option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
 [/list]
+
+[h2]This mod is fully compatible with all Mods and Multiplayer![/h2]
 
 If you want to support me, you can by either donating at my [url=https://www.patreon.com/pearlying]Patreon Page[/url] or help me with a decent mod icon (im bad with it)! If not just enjoy the mod, thats good enough!
