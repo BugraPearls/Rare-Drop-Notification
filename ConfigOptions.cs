@@ -9,7 +9,10 @@ namespace RareDropNotification
 {
     public enum SoundEffect
     {
-        HypixelSkyblock, //Rare drop sound effect
+        HypixelSkyblock, //Hypixel Skyblock Rare drop sound effect
+        CSGO, //Counter Strike: Global Offensive Weapon Case Legendary Item drop sound effect
+        PSO2, //Phantasy Star Online 2 Rare drop sound effect
+        PokemonRBY, //Pokemon RBY Finding a Item sound effect
         Item35, //Using Bell
         Item129, //Golf Ball sunk into a Golf Cup
         Item150, //Mimic projectile reflect
@@ -20,9 +23,10 @@ namespace RareDropNotification
         public const float MaxPercent = 20f;
         public override LocalizedText DisplayName => Language.GetText("Mods.RareDropNotification.ConfigName");
         public override ConfigScope Mode => ConfigScope.ClientSide;
+        [Header("$Mods.RareDropNotification.Mechanics")]
         [Slider()]
         [Range(0.5f, MaxPercent)] 
-        [DefaultValue(5)]
+        [DefaultValue(5f)]
         [LabelKey("$Mods.RareDropNotification.TriggerThreshold")]
         [TooltipKey("$Mods.RareDropNotification.TriggerThresholdTip")]
         public float TriggerThreshold { get; set; }
@@ -32,6 +36,28 @@ namespace RareDropNotification
         [DefaultValue(typeof(Color), "84, 252, 252, 255"), ColorNoAlpha]
         public Color TextColor { get; set; }
 
+        [LabelKey("$Mods.RareDropNotification.EnableSuperRare")]
+        [TooltipKey("$Mods.RareDropNotification.EnableSuperRareTip")]
+        [DefaultValue(true)]
+        public bool EnableSuperRare { get; set; }
+
+        [Slider()]
+        [Range(0.01f, 5f)]
+        [DefaultValue(0.5f)]
+        [LabelKey("$Mods.RareDropNotification.SuperTriggerThreshold")]
+        [TooltipKey("$Mods.RareDropNotification.SuperTriggerThresholdTip")]
+        public float SuperTriggerThreshold { get; set; }
+
+        [LabelKey("$Mods.RareDropNotification.SuperTextColor")]
+        [TooltipKey("$Mods.RareDropNotification.SuperTextColorTip")]
+        [DefaultValue(typeof(Color), "255, 125, 115, 255"), ColorNoAlpha]
+        public Color SuperTextColor { get; set; }
+
+        [LabelKey("$Mods.RareDropNotification.EnableAnnouncements")]
+        [TooltipKey("$Mods.RareDropNotification.EnableAnnouncementsTip")]
+        [DefaultValue(true)]
+        public bool EnableAnnouncements { get; set; }
+
         [Header("$Mods.RareDropNotification.Sound")]
 
         [Slider()]
@@ -40,11 +66,6 @@ namespace RareDropNotification
         [LabelKey("$Mods.RareDropNotification.SoundVolume")]
         [TooltipKey("$Mods.RareDropNotification.SoundVolumeTip")]
         public float SoundEffectVolume { get; set; }
-
-        [DefaultValue(SoundEffect.HypixelSkyblock)]
-        [LabelKey("$Mods.RareDropNotification.CurrentSound")]
-        [TooltipKey("$Mods.RareDropNotification.CurrentSoundTip")]
-        public SoundEffect CurrentSound {  get; set; }
 
         [Slider()]
         [Range(-1f, 1f)]
@@ -60,6 +81,16 @@ namespace RareDropNotification
         [TooltipKey("$Mods.RareDropNotification.SoundPitchVariationTip")]
         public float SoundEffectPitchVariation { get; set; }
 
+        [DefaultValue(SoundEffect.HypixelSkyblock)]
+        [LabelKey("$Mods.RareDropNotification.CurrentSound")]
+        [TooltipKey("$Mods.RareDropNotification.CurrentSoundTip")]
+        public SoundEffect CurrentSound { get; set; }
+
+        [DefaultValue(SoundEffect.PSO2)]
+        [LabelKey("$Mods.RareDropNotification.SuperCurrentSound")]
+        [TooltipKey("$Mods.RareDropNotification.SuperCurrentSoundTip")]
+        public SoundEffect SuperCurrentSound { get; set; }
+
         [Header("$Mods.RareDropNotification.Experimental")]
 
         [DefaultValue(false)]
@@ -70,6 +101,15 @@ namespace RareDropNotification
         [LabelKey("$Mods.RareDropNotification.CustomSound")]
         [TooltipKey("$Mods.RareDropNotification.CustomSoundTip")]
         public string CustomSound { get; set; }
+
+        [DefaultValue(false)]
+        [LabelKey("$Mods.RareDropNotification.EnableSuperCustom")]
+        [TooltipKey("$Mods.RareDropNotification.EnableSuperCustomTip")]
+        public bool EnableSuperCustom { get; set; }
+
+        [LabelKey("$Mods.RareDropNotification.SuperCustomSound")]
+        [TooltipKey("$Mods.RareDropNotification.SuperCustomSoundTip")]
+        public string SuperCustomSound { get; set; }
 
     }
 }
