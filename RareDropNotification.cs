@@ -65,7 +65,7 @@ namespace RareDropNotification
         }
         public static void NotificationEffects(int itemID, float chance)
         {
-            if (chance <= Options.TriggerThreshold) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
+            if (chance <= Options.TriggerThreshold && Options.BlacklistedItems.Exists(x => x.Type == itemID) == false) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
             {
                 if (Options.EnableSuperRare && chance <= Options.SuperTriggerThreshold)
                 {

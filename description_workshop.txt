@@ -7,8 +7,9 @@
 [*] Many sound effects to choose from! (Including Hypixel Skyblock, PSO2, Pokemon and CS:GO, defaults to Hypixel Skyblock's rare drop sound effect)
 [*] Rare Drops with very low chance gets announced to all players in the same world! (Can be turned off, and can use a different color & sound effect)
 [*] Lots of config options to customize your Rare Drop Notification to your liking! Even with an option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
+[*] Blacklist system to take out certain items you don't want to get a notification for!
 [/list]
 
-[h1]This mod is FULLY COMPATIBLE WITH ALL MODS (Yes, every single Mod that exists you can think of) and Multiplayer![/h1]
+[h1]This mod is fully compatible with all Mods (Yes, every single Mod that exists you can think of) and Multiplayer![/h1]
 
 If you want to support me, you can by either donating at my [url=https://www.patreon.com/pearlying]Patreon Page[/url] or help me with a decent mod icon (im bad with it)! If not just enjoy the mod, thats good enough!

@@ -58,6 +58,10 @@ namespace RareDropNotification
         [DefaultValue(true)]
         public bool EnableAnnouncements { get; set; }
 
+        [LabelKey("$Mods.RareDropNotification.BlacklistedItems")]
+        [TooltipKey("$Mods.RareDropNotification.BlacklistedItemsTip")]
+        public List<ItemDefinition> BlacklistedItems { get; set; }
+
         [Header("$Mods.RareDropNotification.Sound")]
 
         [Slider()]
