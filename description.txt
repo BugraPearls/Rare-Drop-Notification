@@ -10,4 +10,8 @@ What this mod brings as whenever you drop something below given chance (5% by de
 
 This mod is FULLY COMPATIBLE WITH ALL MODS (Yes, every single Mod that exists you can think of) and Multiplayer!
 
-If you want to support me, you can by either donating at my patreon (patreon.com/pearlying) or help me with a decent mod icon (im bad with it)! If not just enjoy the mod, thats good enough!
+If you want to support the Mod, you can by checking out Patreon page (patreon.com/pearlying) or help with Localization/Translation of the mod for the language you speak on GitHub (https://github.com/BugraPearls/Rare-Drop-Notification/tree/master/Localization), or with creating a proper Icon for the Mod! If not, just enjoy the mod, thats good enough!
+
+This mod currently supports English and Russian.
+
+Russian translation done by: Alino4kaHvoshch
