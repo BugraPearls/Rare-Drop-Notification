@@ -1,11 +1,11 @@
 Mods: {
 	RareDropNotification: {
-		//сообщения
+		// Notification Texts
 		RareDrop: "[c/<color>:Выпала редкая добыча! <itemName>] [i:<item>] [c/<color>:(<chance>%-ный шанс)]"
 		SuperRareDrop: "[c/<color>:Выпала СУПЕРРЕДКАЯ ДОБЫЧА! <itemName>] [i:<item>] [c/<color>:(<chance>%-ный шанс)]"
 		SuperRareAnnouncement: "[c/<color>:Игрок <name> получил предмет <itemName>] [i:<item>] [c/<color>:, выпадающий с <chance>%-ным шансом!]"
-
-		//конфиги
+		//
+		// Configs Titles etc.
 		ConfigName: Конфигурация
 		BlacklistedItems: Чёрный список предметов
 		BlacklistedItemsTip:
@@ -16,14 +16,14 @@ Mods: {
 		Mechanics: Настройка сообщения
 		Sound: Настройка звукового эффекта
 		Experimental: Эксперементальные настройки
-
-		//добыча
+		//
+		// Regular Text Customization Settings
 		TriggerThreshold: Порог срабатывания (%)
 		TriggerThresholdTip: Добыча, которая выпадают с шансом ниже указанного, будет вызывать «сообщение о выпадении редкой добычи», с сопровождающим его звуковым эффектом
 		TextColor: Цвет сообщения
 		TextColorTip: ""
-
-		//суперредкая добыча
+		//
+		// Super Rare Drop Text Customization Settings
 		EnableSuperRare: Включить сообщение о выпадении суперредкой добычи
 		EnableSuperRareTip: При отключении этой функции будет срабатывать только обычный звук и сообщение о выпадении редкой добычи
 		SuperTriggerThreshold: Порог «суперредкого» срабатывания (%)
@@ -37,8 +37,8 @@ Mods: {
 		SuperTextColorTip: ""
 		EnableAnnouncements: Сообщать о получении суперредкой добычи другими игроками
 		EnableAnnouncementsTip: Определяет, будет ли у вас появляться сообщение о получении суперредкой добычи другими игроками в мультиплеере
-
-		//звук
+		//
+		// Sound Customization Settings
 		SoundVolume: Громкость звукового эффекта
 		SoundVolumeTip:
 			'''
@@ -65,6 +65,7 @@ Mods: {
 			Определяет звуковой эффект, который будет вопроизводится при выпадении суперредкой добычи
 			Эта настройка ничего не делает, если включён пользовательский звуковой эффект
 			'''
+
 		Configs: {
 			SoundEffect: {
 				Tooltip: Выбор звукового эффетка, который будет воспроизводится при выпадении редкой добычи.
@@ -78,8 +79,8 @@ Mods: {
 				Zombie15.Label: Писк мыши
 			}
 		}
-		
-		//эксперементальные
+
+		// Experimental Customization Settings
 		EnableCustom: Включить пользовательский звук. эффект
 		EnableCustomTip:
 			'''

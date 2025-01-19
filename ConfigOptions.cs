@@ -25,7 +25,7 @@ namespace RareDropNotification
         public override ConfigScope Mode => ConfigScope.ClientSide;
         [Header("$Mods.RareDropNotification.Mechanics")]
         [Slider()]
-        [Range(0.5f, MaxPercent)] 
+        [Range(0.5f, MaxPercent)]
         [DefaultValue(5f)]
         [LabelKey("$Mods.RareDropNotification.TriggerThreshold")]
         [TooltipKey("$Mods.RareDropNotification.TriggerThresholdTip")]

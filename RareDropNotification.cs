@@ -1,15 +1,11 @@
 using System;
+using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
-using Microsoft.Xna.Framework;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using System.Threading.Channels;
-using System.IO;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Terraria.ModLoader.IO;
 
 namespace RareDropNotification
 {
@@ -31,7 +27,7 @@ namespace RareDropNotification
                     float chance = reader.ReadSingle();
                     NotificationEffects(itemId, chance);
                     break;
-                    case MessageType.SendAnnouncement:
+                case MessageType.SendAnnouncement:
                     int ID = reader.ReadInt32();
                     float chancc = reader.ReadSingle();
                     ModPacket packet = GetPacket();
@@ -41,7 +37,7 @@ namespace RareDropNotification
                     packet.Write((byte)whoAmI);
                     packet.Send(ignoreClient: whoAmI);
                     break;
-                    case MessageType.ReceiveAnnouncement:
+                case MessageType.ReceiveAnnouncement:
                     int itemsId = reader.ReadInt32();
                     float chanceee = reader.ReadSingle();
                     int playerwho = reader.ReadByte();
@@ -63,6 +59,39 @@ namespace RareDropNotification
         {
             On_ItemDropResolver.ResolveRule += NotifyDrop;
         }
+        public static void PlayASound(SoundEffect setting)
+        {
+            switch (setting)
+            {
+                case SoundEffect.HypixelSkyblock:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
+                    break;
+                case SoundEffect.CSGO:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/CSGO")));
+                    break;
+                case SoundEffect.PSO2:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PSO2")));
+                    break;
+                case SoundEffect.PokemonRBY:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PokemonRBYitem")));
+                    break;
+                case SoundEffect.Item35:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
+                    break;
+                case SoundEffect.Item150:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_150")));
+                    break;
+                case SoundEffect.Item129:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_129")));
+                    break;
+                case SoundEffect.Zombie15:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Zombie_15")));
+                    break;
+                default:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
+                    break;
+            }
+        }
         public static void NotificationEffects(int itemID, float chance)
         {
             if (chance <= Options.TriggerThreshold && Options.BlacklistedItems.Exists(x => x.Type == itemID) == false) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
@@ -82,36 +111,7 @@ namespace RareDropNotification
                         }
                         else
                         {
-                            switch (Options.SuperCurrentSound)
-                            {
-                                case SoundEffect.HypixelSkyblock:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                                    break;
-                                case SoundEffect.CSGO:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/CSGO")));
-                                    break;
-                                case SoundEffect.PSO2:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PSO2")));
-                                    break;
-                                case SoundEffect.PokemonRBY:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PokemonRBYitem")));
-                                    break;
-                                case SoundEffect.Item35:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
-                                    break;
-                                case SoundEffect.Item150:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_150")));
-                                    break;
-                                case SoundEffect.Item129:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_129")));
-                                    break;
-                                case SoundEffect.Zombie15:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Zombie_15")));
-                                    break;
-                                default:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                                    break;
-                            }
+                            PlayASound(Options.SuperCurrentSound);
                         }
                     }
                     if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -138,36 +138,7 @@ namespace RareDropNotification
                         }
                         else
                         {
-                            switch (Options.CurrentSound)
-                            {
-                                case SoundEffect.HypixelSkyblock:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                                    break;
-                                case SoundEffect.CSGO:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/CSGO")));
-                                    break;
-                                case SoundEffect.PSO2:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PSO2")));
-                                    break;
-                                case SoundEffect.PokemonRBY:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PokemonRBYitem")));
-                                    break;
-                                case SoundEffect.Item35:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
-                                    break;
-                                case SoundEffect.Item150:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_150")));
-                                    break;
-                                case SoundEffect.Item129:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_129")));
-                                    break;
-                                case SoundEffect.Zombie15:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Zombie_15")));
-                                    break;
-                                default:
-                                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/HypixelSkyblock")));
-                                    break;
-                            }
+                            PlayASound(Options.CurrentSound);
                         }
                     }
                 }
