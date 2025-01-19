@@ -60,7 +60,7 @@ namespace RareDropNotification
 
         [LabelKey("$Mods.RareDropNotification.BlacklistedItems")]
         [TooltipKey("$Mods.RareDropNotification.BlacklistedItemsTip")]
-        public List<ItemDefinition> BlacklistedItems { get; set; }
+        public List<ItemDefinition> BlacklistedItems = new();
 
         [Header("$Mods.RareDropNotification.Sound")]
 
