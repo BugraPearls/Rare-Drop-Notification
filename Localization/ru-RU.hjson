@@ -22,6 +22,8 @@ Mods: {
 		TriggerThresholdTip: Добыча, которая выпадают с шансом ниже указанного, будет вызывать «сообщение о выпадении редкой добычи», с сопровождающим его звуковым эффектом
 		TextColor: Цвет сообщения
 		TextColorTip: ""
+		// ShowResearch: Enable Disabling Notifications For Researched Items
+		// ShowResearchTip: Fully researched items in Journey Mode will not have a notification appear for them when dropped.
 		//
 		// Super Rare Drop Text Customization Settings
 		EnableSuperRare: Включить сообщение о выпадении суперредкой добычи

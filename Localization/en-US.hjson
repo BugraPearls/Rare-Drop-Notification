@@ -22,6 +22,8 @@ Mods: {
 		TriggerThresholdTip: Rare Drop Message and Sound effect only triggers when drop chance of dropped item is below this value.
 		TextColor: Color of rare drop text
 		TextColorTip: ""
+		ShowResearch: Enable Disabling Notifications For Researched Items
+		ShowResearchTip: Fully researched items in Journey Mode will not have a notification appear for them when dropped.
 		//
 		// Super Rare Drop Text Customization Settings
 		EnableSuperRare: Enable Super Rare Drop Message

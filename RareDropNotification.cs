@@ -2,10 +2,12 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.Creative;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace RareDropNotification
 {
@@ -96,6 +98,10 @@ namespace RareDropNotification
         {
             if (chance <= Options.TriggerThreshold && Options.BlacklistedItems.Exists(x => x.Type == itemID) == false) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
             {
+                if (Options.EnableNotShowingResearched && CreativeItemSacrificesCatalog.Instance.TryGetSacrificeCountCapToUnlockInfiniteItems(itemID,out int count) && Main.LocalPlayerCreativeTracker.ItemSacrifices.GetSacrificeCount(itemID) >= count)
+                {
+                    return;
+                }
                 if (Options.EnableSuperRare && chance <= Options.SuperTriggerThreshold)
                 {
                     Main.NewText(Language.GetTextValue("Mods.RareDropNotification.SuperRareDrop")

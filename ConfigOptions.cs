@@ -36,6 +36,11 @@ namespace RareDropNotification
         [DefaultValue(typeof(Color), "84, 252, 252, 255"), ColorNoAlpha]
         public Color TextColor { get; set; }
 
+        [LabelKey("$Mods.RareDropNotification.ShowResearch")]
+        [TooltipKey("$Mods.RareDropNotification.ShowResearchTip")]
+        [DefaultValue(true)]
+        public bool EnableNotShowingResearched { get; set; }
+
         [LabelKey("$Mods.RareDropNotification.EnableSuperRare")]
         [TooltipKey("$Mods.RareDropNotification.EnableSuperRareTip")]
         [DefaultValue(true)]
@@ -114,6 +119,5 @@ namespace RareDropNotification
         [LabelKey("$Mods.RareDropNotification.SuperCustomSound")]
         [TooltipKey("$Mods.RareDropNotification.SuperCustomSoundTip")]
         public string SuperCustomSound { get; set; }
-
     }
 }
