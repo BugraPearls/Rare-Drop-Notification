@@ -1,4 +1,4 @@
 displayName = Rare Drop Notification
 author = Pearlie
-version = 1.6.1
+version = 1.6.2
 homepage = https://www.patreon.com/pearlying

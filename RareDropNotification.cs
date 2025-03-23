@@ -77,6 +77,9 @@ namespace RareDropNotification
                 case SoundEffect.PokemonRBY:
                     SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/PokemonRBYitem")));
                     break;
+                case SoundEffect.POE:
+                    SoundEngine.PlaySound(ModifiedSound(new SoundStyle("RareDropNotification/Sounds/POE")));
+                    break;
                 case SoundEffect.Item35:
                     SoundEngine.PlaySound(ModifiedSound(new SoundStyle("Terraria/Sounds/Item_35")));
                     break;
