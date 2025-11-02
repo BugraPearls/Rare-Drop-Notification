@@ -1,5 +1,7 @@
 using System;
+using System.Data;
 using System.IO;
+using System.Threading.Channels;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -8,6 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using static System.Text.StringBuilder;
 
 namespace RareDropNotification
 {
@@ -52,15 +55,6 @@ namespace RareDropNotification
                     break;
             }
         }
-        public static SoundStyle ModifiedSound(SoundStyle style)
-        {
-            return style with { Pitch = Options.SoundEffectPitch, PitchVariance = Options.SoundEffectPitchVariation, Volume = Options.SoundEffectVolume, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest, Type = SoundType.Sound, PlayOnlyIfFocused = false };
-        }
-        public static ConfigOptions Options => ModContent.GetInstance<ConfigOptions>();
-        public override void Load()
-        {
-            On_ItemDropResolver.ResolveRule += NotifyDrop;
-        }
         public static void PlayASound(SoundEffect setting)
         {
             switch (setting)
@@ -97,11 +91,16 @@ namespace RareDropNotification
                     break;
             }
         }
+        public static SoundStyle ModifiedSound(SoundStyle style)
+        {
+            return style with { Pitch = Options.SoundEffectPitch, PitchVariance = Options.SoundEffectPitchVariation, Volume = Options.SoundEffectVolume, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest, Type = SoundType.Sound, PlayOnlyIfFocused = false };
+        }
+        public static ConfigOptions Options => ModContent.GetInstance<ConfigOptions>();
         public static void NotificationEffects(int itemID, float chance)
         {
             if (chance <= Options.TriggerThreshold && Options.BlacklistedItems.Exists(x => x.Type == itemID) == false) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
             {
-                if (Options.EnableNotShowingResearched && CreativeItemSacrificesCatalog.Instance.TryGetSacrificeCountCapToUnlockInfiniteItems(itemID,out int count) && Main.LocalPlayerCreativeTracker.ItemSacrifices.GetSacrificeCount(itemID) >= count)
+                if (Options.EnableNotShowingResearched && CreativeItemSacrificesCatalog.Instance.TryGetSacrificeCountCapToUnlockInfiniteItems(itemID, out int count) && Main.LocalPlayerCreativeTracker.ItemSacrifices.GetSacrificeCount(itemID) >= count)
                 {
                     return;
                 }
@@ -153,29 +152,91 @@ namespace RareDropNotification
                 }
             }
         }
+        public override void Load()
+        {
+            On_ItemDropResolver.ResolveRule += NotifyDrop;
+            On_OneFromOptionsDropRule.TryDroppingItem += NotifyDropForOneFromOptions;
+            //On_OneFromRulesRule.TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction += NotifyDropForOneFromRules; //straight up appears to be 100% chance, doesn't work zz
+        }
+        public static void HandleNotifEffects(double chance, int itemID, int playerWhoAmI)
+        {
+            if (chance <= ConfigOptions.MaxPercent //we check if chance is below 20% (Max in config) here to prevent unnecessary messages sent as Netcode since otherwise it would send messages for all drops.
+                && NPCLoader.blockLoot.Contains(itemID) == false) //checking if the given item drop is blocked from all NPCs. Fix for Calamity preventing food drops. IFFFFF NPCLoot doesn't end lol
+            {
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    ModPacket packet = ModContent.GetInstance<RareDropNotification>().GetPacket();
+                    packet.Write((byte)MessageType.ReceiveNotification);
+                    packet.Write(itemID);
+                    packet.Write((float)chance);
+                    packet.Send(toClient: playerWhoAmI);
+                }
+                else
+                {
+                    NotificationEffects(itemID, (float)chance);
+                }
+            }
+        }
         private static ItemDropAttemptResult NotifyDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
             ItemDropAttemptResult result = orig(self, rule, info);
             if (result.State is ItemDropAttemptResultState.Success && rule is CommonDrop drop)
             {
                 double chance = Math.Round((double)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) * 100, 3);
-                if (chance <= ConfigOptions.MaxPercent) //we check if chance is below 20% (Max in config) here to prevent unnecessary messages sent as Netcode since otherwise it would send messages for all drops.
-                {
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        ModPacket packet = ModContent.GetInstance<RareDropNotification>().GetPacket();
-                        packet.Write((byte)MessageType.ReceiveNotification);
-                        packet.Write(drop.itemId);
-                        packet.Write((float)chance);
-                        packet.Send(toClient: info.player.whoAmI);
-                    }
-                    else
-                    {
-                        NotificationEffects(drop.itemId, (float)chance);
-                    }
-                }
+                HandleNotifEffects(chance, drop.itemId, info.player.whoAmI);
             }
             return result;
         }
+        private static ItemDropAttemptResult NotifyDropForOneFromOptions(On_OneFromOptionsDropRule.orig_TryDroppingItem orig, OneFromOptionsDropRule self, DropAttemptInfo info)
+        {
+            ItemDropAttemptResult result; //This here is vanilla code + HandleNotifEffects in it. This may cause disturbance if other mods also use same method detour, an IL edit may be looked into in the future.
+            if (info.player.RollLuck(self.chanceDenominator) < self.chanceNumerator)
+            {
+                int itemId = self.dropIds[info.rng.Next(self.dropIds.Length)];
+                //Dividing the 'chance' to be notified with the length of drop id's, bc for some reason the chance appears as the cumulative chance of all drops in this rule combined,
+                //I THINK despite still being 'cumulative chance / item count'. Ex. Ancient Cobalt Armor drop chance from Hornets seems to be 0.33%, but when notif is received, it says 1%.
+                HandleNotifEffects(Math.Round((double)Math.Max(self.chanceNumerator, 1) / Math.Max(self.chanceDenominator, 1) * 100 / self.dropIds.Length, 3), itemId, info.player.whoAmI);
+
+                CommonCode.DropItem(info, itemId, 1);
+                result = default(ItemDropAttemptResult);
+                result.State = ItemDropAttemptResultState.Success;
+                return result;
+            }
+
+            result = default(ItemDropAttemptResult);
+            result.State = ItemDropAttemptResultState.FailedRandomRoll;
+            return result;
+        }
+
+
+
+        //This was a attempt to show loot drops such as from Pumpkin Moon bosses, but for whatever reason, both self. and drop. ones has 100% chance (despite of course not being 100%)
+        //And truthfully I don't know where to find the info to check the current chance etc. for it. I am shelving this for now.
+
+
+        //private static ItemDropAttemptResult NotifyDropForOneFromRules(On_OneFromRulesRule.orig_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction orig, OneFromRulesRule self, DropAttemptInfo info, ItemDropRuleResolveAction resolveAction)
+        //{
+        //    ItemDropAttemptResult result; //This here is vanilla code + HandleNotifEffects in it. This may cause disturbance if other mods also use same method detour, an IL edit may be looked into in the future.
+        //    /*
+        //    if (info.rng.Next(chanceDenominator) == 0) {
+        //    */
+
+        //    if (info.rng.Next(self.chanceDenominator) < self.chanceNumerator)
+        //    {
+        //        int chosenOption = info.rng.Next(self.options.Length);
+        //        if (self.options[chosenOption] is CommonDrop drop)
+        //        {
+        //            HandleNotifEffects(Math.Round((double)Math.Max(self.chanceNumerator, 1) / Math.Max(self.chanceDenominator, 1) * 100, 3), drop.itemId, info.player.whoAmI);
+        //        }
+        //        resolveAction(self.options[chosenOption], info);
+        //        result = default(ItemDropAttemptResult);
+        //        result.State = ItemDropAttemptResultState.Success;
+        //        return result;
+        //    }
+
+        //    result = default(ItemDropAttemptResult);
+        //    result.State = ItemDropAttemptResultState.FailedRandomRoll;
+        //    return result;
+        //}
     }
 }

@@ -71,15 +71,51 @@ Mods: {
 		Configs: {
 			SoundEffect: {
 				Tooltip: Выбор звукового эффекта, который будет воспроизводится при выпадении редкой добычи.
-				HypixelSkyblock.Label: Hypixel Skyblock
-				CSGO.Label: CS:GO
-				PSO2.Label: Phantasy Star Online 2
-				PokemonRBY.Label: Pokemon R/B/Y
-				// POE.Label: Path of Exile Divine Drop
-				Item35.Label: Звон колокола
-				Item129.Label: Попадание меча в лунку
-				Item150.Label: Отражение снаряда мимиком
-				Zombie15.Label: Писк мыши
+
+				HypixelSkyblock: {
+					Label: Hypixel Skyblock
+					// Tooltip: ""
+				}
+
+				CSGO: {
+					Label: CS:GO
+					// Tooltip: ""
+				}
+
+				PSO2: {
+					Label: Phantasy Star Online 2
+					// Tooltip: ""
+				}
+
+				PokemonRBY: {
+					Label: Pokemon R/B/Y
+					// Tooltip: ""
+				}
+
+				POE: {
+					// Label: Path of Exile Divine Drop
+					// Tooltip: ""
+				}
+
+				Item35: {
+					Label: Звон колокола
+					// Tooltip: ""
+				}
+
+				Item129: {
+					Label: Попадание меча в лунку
+					// Tooltip: ""
+				}
+
+				Item150: {
+					Label: Отражение снаряда мимиком
+					// Tooltip: ""
+				}
+
+				Zombie15: {
+					Label: Писк мыши
+					// Tooltip: ""
+				}
 			}
 		}
 
