@@ -161,7 +161,7 @@ namespace RareDropNotification
         public static void HandleNotifEffects(double chance, int itemID, int playerWhoAmI)
         {
             if (chance <= ConfigOptions.MaxPercent //we check if chance is below 20% (Max in config) here to prevent unnecessary messages sent as Netcode since otherwise it would send messages for all drops.
-                && NPCLoader.blockLoot.Contains(itemID) == false) //checking if the given item drop is blocked from all NPCs. Fix for Calamity preventing food drops. IFFFFF NPCLoot doesn't end lol
+                && NPCLoader.blockLoot.Contains(itemID) == false) //checking if the given item drop is blocked from all NPCs. Fix for Calamity preventing food drops.
             {
                 if (Main.netMode == NetmodeID.Server)
                 {
