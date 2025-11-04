@@ -1,7 +1,5 @@
 using System;
-using System.Data;
 using System.IO;
-using System.Threading.Channels;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -9,8 +7,6 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using static System.Text.StringBuilder;
 
 namespace RareDropNotification
 {

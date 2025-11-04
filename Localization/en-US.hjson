@@ -79,52 +79,52 @@ Mods: {
 				Tooltip: Selection of which sound effect to be played when a rare loot gets dropped.
 
 				HypixelSkyblock: {
-					Label: Hypixel Skyblock Rare Drop
-					Tooltip: ""
+					Label: Hypixel Skyblock
+					Tooltip: Sound that plays when a Rare Drop is obtained on Hypixel Skyblock.
 				}
 
 				CSGO: {
-					Label: CS:GO Case Legendary Drop
-					Tooltip: ""
+					Label: CS:GO
+					Tooltip: Sound that plays when a Legendary Drop is obtained from a CS:GO case.
 				}
 
 				PSO2: {
-					Label: Phantasy Star Online 2 Rare Drop
-					Tooltip: ""
+					Label: PSO2
+					Tooltip: Sound that plays when a Rare Drop is obtained on Phantasy Star Online 2.
 				}
 
 				PokemonRBY: {
-					Label: Pokemon R/B/Y Acquiring Item
-					Tooltip: ""
+					Label: Pokemon
+					Tooltip: Sound that plays when you obtain a item in Pokemon Generation 1 games.
 				}
 
 				POE: {
-					Label: Path of Exile Divine Drop
-					Tooltip: ""
+					Label: PoE
+					Tooltip: Sound that plays when a Divine Drop is obtained on Path of Exile.
 				}
 
 				Item35: {
-					Label: Terraria Bell Ring
-					Tooltip: ""
+					Label: Bell
+					Tooltip: Bell sound effect from vanilla Terraria. (Item35)
 				}
 
 				Item129: {
-					Label: Terraria Golf Ball Sunking In
-					Tooltip: ""
+					Label: Golf Ball Sunk
+					Tooltip: Sound effect that plays when a Golf Ball Sunks in on vanilla Terraria. (Item129)
 				}
 
 				Item150: {
-					Label: Terraria Mimic Projectile Reflect
-					Tooltip: ""
+					Label: Mimic Reflect
+					Tooltip: Sound effect that plays when Biome Mimics reflects a projectile in vanilla Terraria. (Item150)
 				}
 
 				Zombie15: {
-					Label: Terraria Mouse Squeak
-					Tooltip: ""
+					Label: Mouse
+					Tooltip: Squeaking sound effect of Vanilla Terraria Mouse critter. (Zombie15)
 				}
 			}
 		}
-
+		//
 		// Experimental Customization Settings
 		EnableCustom: Enable Custom Sound Effect
 		EnableCustomTip:
@@ -140,7 +140,7 @@ Mods: {
 			Create your 'own mod' and include the sound you want to use, then proceed to use path above to use any sound you want.
 			Use Terraria/Sounds/SoundsName for vanilla sounds. (Refer to 'File' at https://terraria.wiki.gg/wiki/Sound_IDs (use _ for spaces))
 			Its heavily recommended to write/find the path, and copy-paste here, as writing in this textbox may have its difficulties.
-			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY USE AT YOUR OWN RISK!]
+			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY, USE AT YOUR OWN RISK!]
 			'''
 		EnableSuperCustom: Enable Custom Sound Effect for Super Rare Drops
 		EnableSuperCustomTip:
@@ -156,7 +156,7 @@ Mods: {
 			Create your 'own mod' and include the sound you want to use, then proceed to use path above to use any sound you want.
 			Use Terraria/Sounds/SoundsName for vanilla sounds. (Refer to 'File' at https://terraria.wiki.gg/wiki/Sound_IDs (use _ for spaces))
 			Its heavily recommended to write/find the path, and copy-paste here, as writing in this textbox may have its difficulties.
-			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY USE AT YOUR OWN RISK!]
+			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY, USE AT YOUR OWN RISK!]
 			'''
 	}
 }
