@@ -12,4 +12,10 @@
         Item150, //Mimic projectile reflect
         Zombie15, //Rat
     }
+    enum MessageType
+    {
+        ReceiveNotification,
+        SendAnnouncement,
+        ReceiveAnnouncement
+    }
 }

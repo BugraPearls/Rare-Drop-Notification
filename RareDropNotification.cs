@@ -14,11 +14,10 @@ namespace RareDropNotification
 {
     public class RareDropNotification : Mod
     {
-        enum MessageType
+        public static ConfigOptions Options => ModContent.GetInstance<ConfigOptions>();
+        public static SoundStyle ModifiedSound(SoundStyle style)
         {
-            ReceiveNotification,
-            SendAnnouncement,
-            ReceiveAnnouncement
+            return style with { Pitch = Options.SoundEffectPitch, PitchVariance = Options.SoundEffectPitchVariation, Volume = Options.SoundEffectVolume, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest, Type = SoundType.Sound, PlayOnlyIfFocused = false };
         }
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
@@ -89,11 +88,6 @@ namespace RareDropNotification
                     break;
             }
         }
-        public static SoundStyle ModifiedSound(SoundStyle style)
-        {
-            return style with { Pitch = Options.SoundEffectPitch, PitchVariance = Options.SoundEffectPitchVariation, Volume = Options.SoundEffectVolume, SoundLimitBehavior = SoundLimitBehavior.ReplaceOldest, Type = SoundType.Sound, PlayOnlyIfFocused = false };
-        }
-        public static ConfigOptions Options => ModContent.GetInstance<ConfigOptions>();
         public static void NotificationEffects(int itemID, float chance)
         {
             if (chance <= Options.TriggerThreshold && Options.BlacklistedItems.Exists(x => x.Type == itemID) == false) //a if check on the chance is done beforehand, re-checked here because; server checks its own %, with this it uses the sent client's set threshold.
@@ -180,11 +174,6 @@ namespace RareDropNotification
                 }
             }
         }
-        public override void Load()
-        {
-            On_ItemDropResolver.ResolveRule += NotifyDrop;
-            On_OneFromOptionsDropRule.TryDroppingItem += NotifyDropForOneFromOptions;
-        }
         public static void HandleNotifEffects(double chance, int itemID, int playerWhoAmI)
         {
             if (chance <= ConfigOptions.MaxPercent //we check if chance is below 20% (Max in config) here to prevent unnecessary messages sent as Netcode since otherwise it would send messages for all drops.
@@ -233,6 +222,11 @@ namespace RareDropNotification
             result = default;
             result.State = ItemDropAttemptResultState.FailedRandomRoll;
             return result;
+        }
+        public override void Load()
+        {
+            On_ItemDropResolver.ResolveRule += NotifyDrop;
+            On_OneFromOptionsDropRule.TryDroppingItem += NotifyDropForOneFromOptions;
         }
     }
 }
