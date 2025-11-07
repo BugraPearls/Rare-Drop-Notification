@@ -30,6 +30,7 @@ Mods: {
 			If an item is in auto-trash list of Auto Trash Mod,
 			you will not get any notification when that item drops.
 			Auto Trash needs to be enabled in game for this to work.
+			[c/FF0000:(Requires Auto Trash 0.8.1 and above to work!)]
 			''' */
 		//
 		// Super Rare Drop Text Customization Settings
