@@ -4,15 +4,17 @@ What this mod features & brings as whenever you drop something below given chanc
 > You will get a colored Text, which shows how much chance it was, item's name and hoverable item in your chat! 
 > An exciting Sound Effect to alert you that you've dropped a rare drop!
 > Many sound effects to choose from! (Including Hypixel Skyblock, PSO2, POE, Pokemon and CS:GO, defaults to Hypixel Skyblock's rare drop sound effect)
+> Option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
 > Rare Drops with very low chance gets announced to all players in the same world! (Can be turned off, and can use a different color & sound effect)
-> Lots of config options to customize your Rare Drop Notification to your liking! Even with an option of using a custom sound effect, you can use any sound effect you want within your loaded mods!
-> Not displaying a notification for the items researched while in Journey mode! (Can be disabled)
-> Blacklist system to take out certain items you don't want to get a notification for!
+> Options to disable notifications for select items, such as a blacklist, Journey mode compatibility and direct compatibility for items selected in Auto Trash Mod to not give off notification when dropped!
 
-This mod is FULLY COMPATIBLE WITH ALL MODS (Yes, every single Mod that exists you can think of) and Multiplayer!
+This mod does not conflict with any mod and fully supports Multiplayer.
 
-If you want to support the Mod, you can by checking out Patreon page (patreon.com/pearlying) or help with Localization/Translation of the mod for the language you speak on GitHub (https://github.com/BugraPearls/Rare-Drop-Notification/tree/master/Localization), or with creating a proper Icon for the Mod! If not, just enjoy the mod, thats good enough!
+If you want to support the Mod, you can check out our Patreon page (patreon.com/pearlying) 
+
+GitHub (https://github.com/BugraPearls/Rare-Drop-Notification/tree/master/Localization)
 
 This mod currently supports English and Russian.
 
+Credits:
 Russian translation done by: Alino4kaHvoshch
