@@ -1,11 +1,9 @@
 Mods: {
 	RareDropNotification: {
-	
 		# Notification Texts
 		RareDrop: "[c/<color>:Выпал редкий предмет! <itemName>] [i:<item>] [c/<color>:(<chance>%-ный шанс)]"
 		SuperRareDrop: "[c/<color>:Выпал СУПЕРРЕДКИЙ ПРЕДМЕТ! <itemName>] [i:<item>] [c/<color>:(<chance>%-ный шанс)]"
 		SuperRareAnnouncement: "[c/<color>:Игрок <name> получил предмет <itemName>] [i:<item>] [c/<color>:, выпадающий с <chance>%-ным шансом!]"
-
 		# Configs Titles etc.
 		ConfigName: Конфигурация
 		BlacklistedItems: Чёрный список предметов
@@ -17,7 +15,6 @@ Mods: {
 		Mechanics: Настройка сообщения
 		Sound: Настройка звукового эффекта
 		Experimental: Экспериментальные настройки
-
 		# Regular Text Customization Settings
 		TriggerThreshold: Порог срабатывания (%)
 		TriggerThresholdTip:
@@ -36,7 +33,6 @@ Mods: {
 			находящихся в списке на автоудаление/автопродажу, не будет вызывать сообщение
 			[c/FF0000:(Для работы функции требуется Auto Trash версии 0.8.1 или выше)]
 			'''
-
 		# Super Rare Drop Text Customization Settings
 		EnableSuperRare: Включить сообщение о выпадении суперредкого предмета
 		EnableSuperRareTip: При отключении этой функции будет срабатывать только обычный звук и сообщение о выпадении редкого предмета
@@ -51,7 +47,6 @@ Mods: {
 		SuperTextColorTip: ""
 		EnableAnnouncements: Сообщать о получении суперредкого предмета другими игроками
 		EnableAnnouncementsTip: Определяет, будет ли у вас появляться сообщение о получении суперредкого предмета другими игроками в мультиплеере
-
 		# Sound Customization Settings
 		SoundVolume: Громкость звукового эффекта
 		SoundVolumeTip:
