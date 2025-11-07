@@ -7,18 +7,6 @@ using Terraria.ModLoader.Config;
 
 namespace RareDropNotification
 {
-    public enum SoundEffect
-    {
-        HypixelSkyblock, //Hypixel Skyblock Rare drop sound effect
-        CSGO, //Counter Strike: Global Offensive Weapon Case Legendary Item drop sound effect
-        PSO2, //Phantasy Star Online 2 Rare drop sound effect
-        PokemonRBY, //Pokemon RBY Finding a Item sound effect
-        POE, //Path of Exile Divine Drop sound effect
-        Item35, //Using Bell
-        Item129, //Golf Ball sunk into a Golf Cup
-        Item150, //Mimic projectile reflect
-        Zombie15, //Rat
-    }
     public class ConfigOptions : ModConfig
     {
         public const float MaxPercent = 20f;
@@ -28,7 +16,7 @@ namespace RareDropNotification
 
         [LabelKey("$Mods.RareDropNotification.BlacklistedItems")]
         [TooltipKey("$Mods.RareDropNotification.BlacklistedItemsTip")]
-        public List<ItemDefinition> BlacklistedItems = new();
+        public List<ItemDefinition> BlacklistedItems = [];
 
         [Slider()]
         [Range(0.5f, MaxPercent)]

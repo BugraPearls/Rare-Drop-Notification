@@ -111,7 +111,7 @@ namespace RareDropNotification
                         {
                             continue;
                         }
-                        
+
                         Type trashPlayerTypeInfo = autoTrash.GetType().Assembly.GetType("AutoTrash.AutoTrashPlayer"); //Getting 'template' of the instance, not actually getting the instance itself here
                         FieldInfo isItEnabled = trashPlayerTypeInfo.GetField("AutoTrashEnabled"); //We get the field info through the template
                         if (isItEnabled is not null && isItEnabled.FieldType == typeof(bool)) //We make sure its a bool for no errors
@@ -184,7 +184,6 @@ namespace RareDropNotification
         {
             On_ItemDropResolver.ResolveRule += NotifyDrop;
             On_OneFromOptionsDropRule.TryDroppingItem += NotifyDropForOneFromOptions;
-            //On_OneFromRulesRule.TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction += NotifyDropForOneFromRules; //straight up appears to be 100% chance, doesn't work zz
         }
         public static void HandleNotifEffects(double chance, int itemID, int playerWhoAmI)
         {
@@ -226,45 +225,14 @@ namespace RareDropNotification
                 HandleNotifEffects(Math.Round((double)Math.Max(self.chanceNumerator, 1) / Math.Max(self.chanceDenominator, 1) * 100 / self.dropIds.Length, 3), itemId, info.player.whoAmI);
 
                 CommonCode.DropItem(info, itemId, 1);
-                result = default(ItemDropAttemptResult);
+                result = default;
                 result.State = ItemDropAttemptResultState.Success;
                 return result;
             }
 
-            result = default(ItemDropAttemptResult);
+            result = default;
             result.State = ItemDropAttemptResultState.FailedRandomRoll;
             return result;
         }
-
-
-
-        //This was a attempt to show loot drops such as from Pumpkin Moon bosses, but for whatever reason, both self. and drop. ones has 100% chance (despite of course not being 100%)
-        //And truthfully I don't know where to find the info to check the current chance etc. for it. I am shelving this for now.
-
-
-        //private static ItemDropAttemptResult NotifyDropForOneFromRules(On_OneFromRulesRule.orig_TryDroppingItem_DropAttemptInfo_ItemDropRuleResolveAction orig, OneFromRulesRule self, DropAttemptInfo info, ItemDropRuleResolveAction resolveAction)
-        //{
-        //    ItemDropAttemptResult result; //This here is vanilla code + HandleNotifEffects in it. This may cause disturbance if other mods also use same method detour, an IL edit may be looked into in the future.
-        //    /*
-        //    if (info.rng.Next(chanceDenominator) == 0) {
-        //    */
-
-        //    if (info.rng.Next(self.chanceDenominator) < self.chanceNumerator)
-        //    {
-        //        int chosenOption = info.rng.Next(self.options.Length);
-        //        if (self.options[chosenOption] is CommonDrop drop)
-        //        {
-        //            HandleNotifEffects(Math.Round((double)Math.Max(self.chanceNumerator, 1) / Math.Max(self.chanceDenominator, 1) * 100, 3), drop.itemId, info.player.whoAmI);
-        //        }
-        //        resolveAction(self.options[chosenOption], info);
-        //        result = default(ItemDropAttemptResult);
-        //        result.State = ItemDropAttemptResultState.Success;
-        //        return result;
-        //    }
-
-        //    result = default(ItemDropAttemptResult);
-        //    result.State = ItemDropAttemptResultState.FailedRandomRoll;
-        //    return result;
-        //}
     }
 }
