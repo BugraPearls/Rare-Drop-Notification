@@ -24,6 +24,13 @@ Mods: {
 		TextColorTip: ""
 		ShowResearch: Enable Disabling Notifications For Researched Items
 		ShowResearchTip: Fully researched items in Journey Mode will not have a notification appear for them when dropped.
+		ShowAutoTrash: Enable Auto Trash Mod Compatibility
+		ShowAutoTrashTip:
+			'''
+			If an item is in auto-trash list of Auto Trash Mod,
+			you will not get any notification when that item drops.
+			Auto Trash needs to be enabled in game for this to work.
+			'''
 		//
 		// Super Rare Drop Text Customization Settings
 		EnableSuperRare: Enable Super Rare Drop Message
@@ -124,6 +131,7 @@ Mods: {
 				}
 			}
 		}
+
 		//
 		// Experimental Customization Settings
 		EnableCustom: Enable Custom Sound Effect

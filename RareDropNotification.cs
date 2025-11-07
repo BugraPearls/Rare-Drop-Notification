@@ -1,5 +1,9 @@
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using MonoMod.Utils;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.Creative;
@@ -100,6 +104,36 @@ namespace RareDropNotification
                 {
                     return;
                 }
+
+                if (Options.EnableNotShowingAutoTrashed && ModLoader.TryGetMod("AutoTrash", out Mod autoTrash)) //Checking if Auto Trash mod exists
+                {
+                    foreach (var trashPlayer in Main.LocalPlayer.ModPlayers) //Going through Mod Player instances
+                    {
+                        if (trashPlayer.Mod != autoTrash || trashPlayer.Name != "AutoTrashPlayer") //Eliminating all that isn't AutoTrashPlayer from Auto Trash Mod
+                        {
+                            continue;
+                        }
+                        
+                        Type trashPlayerTypeInfo = autoTrash.GetType().Assembly.GetType("AutoTrash.AutoTrashPlayer"); //Getting 'template' of the instance, not actually getting the instance itself here
+                        FieldInfo isItEnabled = trashPlayerTypeInfo.GetField("AutoTrashEnabled"); //We get the field info through the template
+                        if (isItEnabled is not null && isItEnabled.FieldType == typeof(bool)) //We make sure its a bool for no errors
+                        {
+                            bool enable = (bool)isItEnabled.GetValue(trashPlayer); //We get the value from isItEnabled (the AutoTrashEnabled field) inside the trashPlayer (ModPlayer instance we got from Main.LocalPlayer.ModPlayers) 
+                            if (enable) //if Auto Trash is enabled
+                            {
+                                FieldInfo listOfItems = trashPlayerTypeInfo.GetField("AutoTrashItems"); //Same as 'enable', we take the List's information from 'template'.
+                                if (listOfItems is not null && listOfItems.FieldType == typeof(List<Item>)) //we make sure its List<Item> for no errors
+                                {
+                                    List<Item> AutoTrashItems = (List<Item>)listOfItems.GetValue(trashPlayer); //We take the actual item list off of trashPlayer, same as above
+                                    if (AutoTrashItems.Exists(x => x.type == itemID)) //checking if our dropped item is inside this list
+                                    {
+                                        return; //This method will stop running from here ofc, if both Auto Trash is enabled, and item id exists within the list of items of Auto Trash.
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 if (Options.EnableSuperRare && chance <= Options.SuperTriggerThreshold)
                 {
                     Main.NewText(Language.GetTextValue("Mods.RareDropNotification.SuperRareDrop")
@@ -111,7 +145,7 @@ namespace RareDropNotification
                     {
                         if (Options.EnableSuperCustom)
                         {
-                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle(Options.SuperCustomSound))); //This is risky, but still fun
+                            SoundEngine.PlaySound(ModifiedSound(new SoundStyle(Options.SuperCustomSound)));
                         }
                         else
                         {

@@ -25,6 +25,11 @@ namespace RareDropNotification
         public override LocalizedText DisplayName => Language.GetText("Mods.RareDropNotification.ConfigName");
         public override ConfigScope Mode => ConfigScope.ClientSide;
         [Header("$Mods.RareDropNotification.Mechanics")]
+
+        [LabelKey("$Mods.RareDropNotification.BlacklistedItems")]
+        [TooltipKey("$Mods.RareDropNotification.BlacklistedItemsTip")]
+        public List<ItemDefinition> BlacklistedItems = new();
+
         [Slider()]
         [Range(0.5f, MaxPercent)]
         [DefaultValue(5f)]
@@ -41,6 +46,11 @@ namespace RareDropNotification
         [TooltipKey("$Mods.RareDropNotification.ShowResearchTip")]
         [DefaultValue(true)]
         public bool EnableNotShowingResearched { get; set; }
+
+        [LabelKey("$Mods.RareDropNotification.ShowAutoTrash")]
+        [TooltipKey("$Mods.RareDropNotification.ShowAutoTrashTip")]
+        [DefaultValue(true)]
+        public bool EnableNotShowingAutoTrashed { get; set; }
 
         [LabelKey("$Mods.RareDropNotification.EnableSuperRare")]
         [TooltipKey("$Mods.RareDropNotification.EnableSuperRareTip")]
@@ -63,10 +73,6 @@ namespace RareDropNotification
         [TooltipKey("$Mods.RareDropNotification.EnableAnnouncementsTip")]
         [DefaultValue(true)]
         public bool EnableAnnouncements { get; set; }
-
-        [LabelKey("$Mods.RareDropNotification.BlacklistedItems")]
-        [TooltipKey("$Mods.RareDropNotification.BlacklistedItemsTip")]
-        public List<ItemDefinition> BlacklistedItems = new();
 
         [Header("$Mods.RareDropNotification.Sound")]
 
