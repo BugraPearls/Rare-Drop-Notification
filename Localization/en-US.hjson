@@ -1,11 +1,12 @@
 Mods: {
 	RareDropNotification: {
-		// Notification Texts
+	
+		# Notification Texts
 		RareDrop: "[c/<color>:Rare Drop! <itemName>] [i:<item>] [c/<color>:(<chance>% chance)]"
 		SuperRareDrop: "[c/<color>:SUPER RARE DROP! <itemName>] [i:<item>] [c/<color>:(<chance>% chance)]"
 		SuperRareAnnouncement: "[c/<color>:<name> has found a <itemName>] [i:<item>] [c/<color>:with <chance>% chance!]"
-		//
-		// Configs Titles etc.
+
+		# Configs Titles etc.
 		ConfigName: Notification Customization
 		BlacklistedItems: Blacklisted Items
 		BlacklistedItemsTip:
@@ -16,8 +17,8 @@ Mods: {
 		Mechanics: Notification Mechanics
 		Sound: Rare Drop Sound Effect Settings
 		Experimental: Experimental Settings
-		//
-		// Regular Text Customization Settings
+
+		# Regular Text Customization Settings
 		TriggerThreshold: Trigger Threshold %
 		TriggerThresholdTip: Rare Drop Message and Sound effect only triggers when drop chance of dropped item is below this value.
 		TextColor: Color of rare drop text
@@ -32,8 +33,8 @@ Mods: {
 			Auto Trash needs to be enabled in game for this to work.
 			[c/FF0000:(Requires Auto Trash 0.8.1 and above to work!)]
 			'''
-		//
-		// Super Rare Drop Text Customization Settings
+
+		# Super Rare Drop Text Customization Settings
 		EnableSuperRare: Enable Super Rare Drop Message
 		EnableSuperRareTip: Disabling this will only have regular Rare Drop Text & Sound working.
 		SuperTriggerThreshold: Super Rare Notification Threshold %
@@ -53,8 +54,8 @@ Mods: {
 			With this option on; you will see other Players'
 			Super Rare drops while in Multiplayer.
 			'''
-		//
-		// Sound Customization Settings
+
+		# Sound Customization Settings
 		SoundVolume: Sound Effect Volume
 		SoundVolumeTip:
 			'''
@@ -133,8 +134,7 @@ Mods: {
 			}
 		}
 
-		//
-		// Experimental Customization Settings
+		# Experimental Customization Settings
 		EnableCustom: Enable Custom Sound Effect
 		EnableCustomTip:
 			'''
