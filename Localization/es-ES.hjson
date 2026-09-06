@@ -1,0 +1,166 @@
+Mods: {
+	RareDropNotification: {
+		# Notification Texts
+		RareDrop: "[c/<color>:¡Ha caído un objeto raro! <itemName>] [i:<item>] [c/<color>:(<chance>% de probabilidad de caída)]"
+		SuperRareDrop: "[c/<color>:¡Ha caído un objeto SUPERRARO! <itemName>] [i:<item>] [c/<color>:(<chance>% de probabilidad de caída)]"
+		SuperRareAnnouncement: "[c/<color>:<name> ha encontrado un <itemName>] [i:<item>] [c/<color>:¡Con <chance>% de probabilidad de caída!]"
+		# Configs Titles etc.
+		ConfigName: Personalización de notificaciones
+		BlacklistedItems: Lista negra de objetos
+		BlacklistedItemsTip:
+			'''
+			Si alguno de estos objetos aparecen, no se te notificará en el chat de su caída.
+			Sin importar cómo se obtengan ni lo raros que sean.
+			'''
+		Mechanics: Mecánica de notificación
+		Sound: Configuración de efectos de sonido al caer un objeto raro
+		Experimental: Configuraciones experimentales
+		# Regular Text Customization Settings
+		TriggerThreshold: Umbral de activación %
+		TriggerThresholdTip: El mensaje de aviso al caer un [c/54fcfc:objeto raro], y el efecto de sonido solo se activan cuando la probabilidad de caída del objeto es inferior a este valor.
+		TextColor: Color del texto de caída rara
+		TextColorTip: ""
+		ShowResearch: Habilitar/deshabilitar notificaciones para los objetos investigados
+		ShowResearchTip: Los objetos completamente investigados en el [c/ff78bb:modo viaje] no tendrán ninguna notificación cuando se los suelte.
+		ShowAutoTrash: Habilitar compatibilidad al mod 'Auto Trash'
+		ShowAutoTrashTip:
+			'''
+			Si un objeto está en la lista [c/f4d58d:auto-trash list] del mod [c/f4d58d:Auto Trash],
+			no recibirás ninguna notificación cuando ese objeto desaparezca.
+			Para que esto funcione, es necesario activar el mod [c/f4d58d:Auto Trash] en el juego.
+			[c/FF0000:(¡Requiere Auto Trash 0.8.1 o superior para funcionar!)]
+			'''
+		# Super Rare Drop Text Customization Settings
+		EnableSuperRare: Habilitar mensaje al caer un objeto superraro
+		EnableSuperRareTip: Al deshabilitar esta opción solo funcionarán los textos y sonidos de objetos raros normales.
+		SuperTriggerThreshold: Umbral de notificación superraro %
+		SuperTriggerThresholdTip:
+			'''
+			Las caídas por debajo de esta probabilidad activarán el mensaje [c/ff7d73:Ha caído un objeto SUPERRARO].
+			Los objetos súper raros pueden tener un color y un sonido diferentes.
+			En el modo multijugador, este tipo de aviso se anuncia a todos los demás jugadores.
+			Un jugador que tenga desactivada la opción [c/f4d58d:mostrar aviso de caída de objetos superraros de otros jugadores] no verá
+			tus mensajes de [c/ff7d73:ha caído un objeto SUPERRARO] en su juego.
+			'''
+		SuperTextColor: Color del texto de caída superrara
+		SuperTextColorTip: ""
+		EnableAnnouncements: Mostrar aviso de caída de objetos superraros de otros jugadores 
+		EnableAnnouncementsTip:
+			'''
+			Con esta opción activada, verás los avisos de cuándo
+			han caído objetos superraros de otros jugadores, mientras estés en el modo multijugador.
+			'''
+		# Sound Customization Settings
+		SoundVolume: Volumen del efecto de sonido
+		SoundVolumeTip:
+			'''
+			Establece el volumen del efecto de sonido, de cuando avisa que ha caído un [c/54fcfc:objeto raro].
+			Establezca esto en 0 para detener por completo la ejecución del código de efecto de sonido.
+			'''
+		SoundPitch: Tono de efecto de sonido
+		SoundPitchTip: Establece el tono base del efecto de sonido, al caer un [c/54fcfc:objeto raro].
+		SoundPitchVariation: Variación del tono del efecto de sonido
+		SoundPitchVariationTip:
+			'''
+			Establece la cantidad posible de tono que se puede aumentar o disminuir cuando se reproduce un efecto de sonido, al caer un [c/54fcfc:objeto raro].
+			Se recomienda tener este valor mayor a 0, ya que puede reducir la repetitividad del efecto de sonido.
+			'''
+		CurrentSound: Efecto de sonido actual
+		CurrentSoundTip:
+			'''
+			Efecto de sonido que se reproduce al caer un [c/54fcfc:objeto raro].
+			No hace falta ningún cambio, si la opción de [c/f4d58d:enable Custom Sound Effect] está activada.
+			'''
+		SuperCurrentSound: Efecto de sonido superraro
+		SuperCurrentSoundTip:
+			'''
+			Efecto de sonido que se reproduce al caer un objeto superraro.
+			No hace falta ningún cambio, si la opción de [c/f4d58d:enable Custom Sound Effect for Super Rare Drops] está desactivada.
+			'''
+
+		Configs: {
+			SoundEffect: {
+				Tooltip: Selección del efecto de sonido que se reproducirá, al caer un objeto raro.
+
+				HypixelSkyblock: {
+					Label: Hypixel Skyblock
+					Tooltip: Sonido que se reproduce al obtener un [c/54fcfc:objeto raro] en Hypixel Skyblock.
+				}
+
+				CSGO: {
+					Label: CS:GO
+					Tooltip: Sonido que se reproduce al obtener un objeto legendario de una caja de CS:GO.
+				}
+
+				PSO2: {
+					Label: PSO2
+					Tooltip: Sonido que se reproduce al obtener un [c/54fcfc:objeto raro] en Phantasy Star Online 2.
+				}
+
+				PokemonRBY: {
+					Label: Pokemon
+					Tooltip: Sonido que se reproduce al obtener un objeto en los juegos de Pokémon de la primera generación.
+				}
+
+				POE: {
+					Label: PoE
+					Tooltip: Sonido que se reproduce al obtener un [c/f4d58d:objeto divino] en Path of Exile.
+				}
+
+				Item35: {
+					Label: Campana
+					Tooltip: Efecto de sonido de campana del Terraria original. (Item35)
+				}
+
+				Item129: {
+					Label: Pelota de golf hundida
+					Tooltip: Efecto de sonido que se reproduce cuando una pelota de golf se hunde en el Terraria original. (Item129)
+				}
+
+				Item150: {
+					Label: Cofre falso reflejando un proyectil
+					Tooltip: Efecto de sonido que se reproduce cuando [c/f4d58d:Cofre falso de bioma] refleja un proyectil en Terraria vanilla. (Item150)
+				}
+
+				Zombie15: {
+					Label: Ratón
+					Tooltip: Efecto de sonido de un chillido de ratón, de Terraria Vanilla. (Zombie15)
+				}
+			}
+		}
+
+		# Experimental Customization Settings
+		EnableCustom: Enable Custom Sound Effect
+		EnableCustomTip:
+			'''
+			Custom sound effect path will not take in effect if this isn't enabled.
+			So you can choose to switch it out without removing the path.
+			'''
+		CustomSound: Custom Sound Effect Path [c/FF0000:USE AT YOUR OWN RISK]
+		CustomSoundTip:
+			'''
+			Type in the path of desired sound effect here, and it will be played when a Rare Loot is dropped.
+			Use ModName/FileDestination/SoundsName for Mod Sound effects. (Refer to Desired Mod's GitHub page or its extracted files)
+			Create your 'own mod' and include the sound you want to use, then proceed to use path above to use any sound you want.
+			Use Terraria/Sounds/SoundsName for vanilla sounds. (Refer to 'File' at https://terraria.wiki.gg/wiki/Sound_IDs (use _ for spaces))
+			Its heavily recommended to write/find the path, and copy-paste here, as writing in this textbox may have its difficulties.
+			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY, USE AT YOUR OWN RISK!]
+			'''
+		EnableSuperCustom: Enable Custom Sound Effect for Super Rare Drops
+		EnableSuperCustomTip:
+			'''
+			Custom Super Rare Sound Effect Path will not take in effect if this isn't enabled.
+			So you can choose to switch it out without removing the path.
+			'''
+		SuperCustomSound: Custom Super Rare Sound Effect Path [c/FF0000:USE AT YOUR OWN RISK]
+		SuperCustomSoundTip:
+			'''
+			Type in the path of desired sound effect here, and it will be played when a Super Rare Loot is dropped.
+			Use ModName/FileDestination/SoundsName for Mod Sound effects. (Refer to Desired Mod's GitHub page or its extracted files)
+			Create your 'own mod' and include the sound you want to use, then proceed to use path above to use any sound you want.
+			Use Terraria/Sounds/SoundsName for vanilla sounds. (Refer to 'File' at https://terraria.wiki.gg/wiki/Sound_IDs (use _ for spaces))
+			Its heavily recommended to write/find the path, and copy-paste here, as writing in this textbox may have its difficulties.
+			[c/FF0000:Experimental Feature: WRONG PATHS CAUSE ERRORS! ALTHOUGH LOSSES ETC. ARE UNLIKELY, USE AT YOUR OWN RISK!]
+			'''
+	}
+}
