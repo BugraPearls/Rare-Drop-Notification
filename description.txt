@@ -14,7 +14,8 @@ If you want to support the Mod, you can check out our Patreon page (patreon.com/
 
 GitHub (https://github.com/BugraPearls/Rare-Drop-Notification/tree/master/Localization)
 
-This mod currently supports English and Russian.
+This mod currently supports English, Spanish and Russian.
 
 Credits:
 Russian translation done by: Alino4kaHvoshch
+Spanish translation done by: Elocura

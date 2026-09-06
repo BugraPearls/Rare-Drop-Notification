@@ -44,7 +44,7 @@ Mods: {
 			'''
 		SuperTextColor: Color del texto de caída superrara
 		SuperTextColorTip: ""
-		EnableAnnouncements: Mostrar aviso de caída de objetos superraros de otros jugadores 
+		EnableAnnouncements: Mostrar aviso de caída de objetos superraros de otros jugadores
 		EnableAnnouncementsTip:
 			'''
 			Con esta opción activada, verás los avisos de cuándo

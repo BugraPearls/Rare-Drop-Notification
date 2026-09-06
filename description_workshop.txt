@@ -16,7 +16,8 @@ If you want to support the Mod, you can check out my [url=https://www.patreon.co
 
 You can contribute or view the code through my [url=https://github.com/BugraPearls/Rare-Drop-Notification]GitHub[/url]
 
-This mod currently supports English and Russian.
+This mod currently supports English, Spanish and Russian.
 
 Credits:
 Russian translation done by: [url=https://steamcommunity.com/profiles/76561199046829447]Alino4kaHvoshch[/url]
+Spanish translation done by: Elocura
